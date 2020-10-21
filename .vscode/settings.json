@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "create_dataset\\env\\Scripts\\python.exe"
+    "python.pythonPath": "d:\\School\\TAMU\\CSCE_470\\project\\code\\env\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true
 }
