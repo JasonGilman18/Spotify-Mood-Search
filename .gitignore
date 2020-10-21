@@ -2,4 +2,6 @@
 config.py
 
 #virtual packages
-env/
+env
+
+.vscode
