@@ -1,2 +1,5 @@
 #ignore api_key
 config.py
+
+#virtual packages
+env/
