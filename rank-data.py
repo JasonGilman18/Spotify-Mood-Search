@@ -4,7 +4,7 @@ import math
 
 def main():
     #define user prefs, later these will be values pulled from GUI
-    USER_PREFS = {"songName": "", "artistName": "", "albumName": "", "acousticness": 0.051, "danceability": .901, "energy": .4, "instrumentalness": 0.0, "liveness": .0599}
+    USER_PREFS = {"acousticness": 0.051, "danceability": .901, "energy": .4, "instrumentalness": 0.0, "liveness": .0599, "speechiness": .126, "valence": .346}
 
     #call loadDataset to load data from excel into a list of dictonaries. Each Dictionary is a row in the excel
     list_of_songs = loadDataset()
@@ -30,15 +30,8 @@ def rankDataset(ls, USER_PREFS):
     #input USER_PREFS - a dictonary of the user's preferences
 
 
-
-    #give extra weight to vectors that are the song title or artist that the user searched for -> so they appear highest on results
-    #might have to consider how similar the artistName or songName or albumName is to the USER_PREF value since it may not be a 100% direct match
-
-
-
-    #fetch the selected user prefs and remove songName, artistName, and albumName
+    #fetch the selected user prefs
     features = list(USER_PREFS.keys())
-    features = features[3:]
     
     #compute the magnitude of the user preference vector. used in cosine similarity equation
     user_mag = 0.0
@@ -78,7 +71,6 @@ def exportDataset(rl, USER_PREFS):
     output = {"similarity": [], "songName": [], "artistName": [], "albumName": [], "songID": [], "artistID": [], "albumID": [], "duration": [], "key": [], "mode": [], "time_signature": [], "acousticness": [], "danceability": [], "energy": [], "instrumentalness": [], "liveness": [], "loudness": [], "speechiness": [], "valence": [], "tempo": []}
     
     features = list(USER_PREFS.keys())
-    features = features[3:]
     for feature in features:
         output[feature].append(USER_PREFS[feature])
 
