@@ -16,6 +16,9 @@ To install:
 3)  Install dependencies, when virtual env is active
     "pip install -r requirements.txt"
 
+4)  Create the config.py the same way it is on git. 
+    Cannot be stored on git bc it has api keys
+
 
 ** if you add packages run
     "pip freeze > requirements.txt"
