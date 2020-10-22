@@ -4,6 +4,8 @@ import math
 
 def main():
     #define user prefs, later these will be values pulled from GUI
+    #In GUI we need to create inputs that the user can understand ie. not a 1:1 relationship to these stats
+    #assign these stats based on the users mood (inputs from gui)
     USER_PREFS = {"acousticness": 0.051, "danceability": .901, "energy": .4, "instrumentalness": 0.0, "liveness": .0599, "speechiness": .126, "valence": .346}
 
     #call loadDataset to load data from excel into a list of dictonaries. Each Dictionary is a row in the excel
