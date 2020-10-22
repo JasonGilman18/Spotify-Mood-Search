@@ -81,26 +81,8 @@ def exportDataset(rl, USER_PREFS):
             output[key].append("-")
     
     for song in rl:
-        output["similarity"].append(song["similarity"])
-        output["songName"].append(song["songName"])
-        output["songID"].append(song["songID"])
-        output["artistName"].append(song["artistName"])
-        output["artistID"].append(song["artistID"])
-        output["albumName"].append(song["albumName"])
-        output["albumID"].append(song["albumID"])
-        output["duration"].append(song["duration"])
-        output["key"].append(song["key"])
-        output["mode"].append(song["mode"])
-        output["time_signature"].append(song["time_signature"])
-        output["acousticness"].append(song["acousticness"])
-        output["danceability"].append(song["danceability"])
-        output["energy"].append(song["energy"])
-        output["instrumentalness"].append(song["instrumentalness"])
-        output["liveness"].append(song["liveness"])
-        output["loudness"].append(song["loudness"])
-        output["speechiness"].append(song["speechiness"])
-        output["valence"].append(song["valence"])
-        output["tempo"].append(song["tempo"])
+        for key in output.keys():
+            output[key].append(song[key])
 
     filename = "./ranked_dataset.xlsx"
     pandas.DataFrame(output).to_excel(filename)
