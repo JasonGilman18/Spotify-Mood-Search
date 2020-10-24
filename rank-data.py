@@ -16,10 +16,10 @@ def main():
     artist_centriods = centroid_vectors[0]
     album_centriods = centroid_vectors[1]
 
-    #call rankSongs to rank the songs according to the user's prefs
+    #call rankSongs to rank the artists according to the user's prefs
     ranked_list_of_artists = rankArtists(artist_centriods, USER_PREFS)
 
-    #call rankSongs to rank the songs according to the user's prefs
+    #call rankSongs to rank the albums according to the user's prefs
     ranked_list_of_albums = rankAlbums(album_centriods, USER_PREFS)
 
     #call rankSongs to rank the songs according to the user's prefs
@@ -132,7 +132,7 @@ def rankAlbums(ac, USER_PREFS):
         user_mag += math.pow(USER_PREFS[feature], 2)
     user_mag = math.sqrt(user_mag)
 
-    #compute the magnitude and cosine similartiy for each album and user preference. Append the artist with the similarity score to an unsorted list
+    #compute the magnitude and cosine similartiy for each album and user preference. Append the album with the similarity score to an unsorted list
     similarity_ranking = []
     for album in ac:
 
