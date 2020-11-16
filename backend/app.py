@@ -40,6 +40,19 @@ class rank_api(Resource):
 
         #call rankSongs to rank the songs according to the user's prefs
         ranked_list_of_songs = rank.rankSongs(list_of_songs, USER_PREFS)
+        removed_list_of_songs = []
+        seen_songs = {}
+        for song in ranked_list_of_songs:
+            if song["name"] in seen_songs.keys():
+                if seen_songs[song["name"]]["artist"] == song["artistName"]:
+                    seen_songs[song["name"]]["artist"] == song["artistName"]
+                else:
+                    removed_list_of_songs.append(song)
+                    seen_songs[song["name"]]["artist"] == song["artistName"]
+            else:
+                removed_list_of_songs.append(song)
+                seen_songs[song["name"]]["artist"] == song["artistName"]
+                
 
         ranked_lists = (ranked_list_of_songs[:100], ranked_list_of_artists, ranked_list_of_albums[:100])
 
