@@ -1,5 +1,6 @@
 #ignore api_key
-backend/data/config.py
+backend/frontend/static/data/config.py
+backend/frontend/static/data/__pycache__
 backend/.vscode
 
 #virtual packages
