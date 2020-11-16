@@ -81,3 +81,8 @@
     -webkit-box-shadow: 0 0 3px #121212;
     box-shadow: 0 0 3px  #121212;
 }
+
+.label
+{
+    font-weight: 600;
+}

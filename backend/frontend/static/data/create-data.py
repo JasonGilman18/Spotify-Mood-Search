@@ -38,8 +38,6 @@ def createData(artistNames, accessToken):
         finishOut = True
         albums = getArtistAlbums(artistID, accessToken)
         for album in albums:
-            #if whichAlbum > 0:
-                #finishOut = data["artists"][whichArtist]["albums"][whichAlbum-1]["albumName"] != album["albumName"] and "deluxe" not in album["albumName"]
                     
             if finishOut:
                 data["artists"][whichArtist]["albums"].append({"albumName": album["albumName"], "albumID": album["albumID"], "songs": []})
@@ -97,11 +95,14 @@ def getArtistAlbums(artistID, accessToken):
     header = {"Authorization": "Bearer " + accessToken}
     response = requests.get(url, headers=header)
     data = response.json()
+    check_dup = []
     albums = []
     if response.status_code==200:
         for album in data["items"]:
-            if (album["name"].lower()).find("deluxe") == -1 and (album["name"].lower()).find("remastered") == -1 and (album["name"].lower()).find("remastered") == -1 and (album["name"].lower()).find("remaster") == -1 and (album["name"].lower()).find("remix") == -1 and (album["name"].lower()).find("commentary") == -1 and (album["name"].lower()).find("track by track") == -1:
-                albums.append({"albumName": album["name"], "albumID": album["id"]})
+            if album["name"] not in check_dup:
+                    if (album["name"].lower()).find("deluxe") == -1 and (album["name"].lower()).find("remastered") == -1 and (album["name"].lower()).find("remastered") == -1 and (album["name"].lower()).find("remaster") == -1 and (album["name"].lower()).find("remix") == -1 and (album["name"].lower()).find("commentary") == -1 and (album["name"].lower()).find("track by track") == -1 and (album["name"].lower()).find("me. i am mariah... the elusive chanteuse") == -1:
+                        albums.append({"albumName": album["name"], "albumID": album["id"]})
+                        check_dup.append(album["name"])
     return albums
 
 
@@ -110,11 +111,14 @@ def getAlbumSongs(albumID, accessToken):
     header = {"Authorization": "Bearer " + accessToken}
     response = requests.get(url, headers=header)
     data = response.json()
+    check_dup = []
     songs = []
     if response.status_code==200:
         for song in data["items"]:
-            if (song["name"].lower()).find("skit") == -1 and (song["name"].lower()).find("commentary") == -1 and (song["name"].lower()).find("intro") == -1 and (song["name"].lower()).find("dialogue") == -1 and (song["name"].lower()).find("Me. I Am Mariah") == -1:
-                songs.append({"songName": song["name"], "songID": song["id"]})
+            if song["name"] not in check_dup:
+                if (song["name"].lower()).find("skit") == -1 and (song["name"].lower()).find("commentary") == -1 and (song["name"].lower()).find("intro") == -1 and (song["name"].lower()).find("dialogue") == -1 and (song["name"].lower()).find("Me. I Am Mariah") == -1:
+                    songs.append({"songName": song["name"], "songID": song["id"]})
+                    check_dup.append(song["name"])
     return songs
 
 

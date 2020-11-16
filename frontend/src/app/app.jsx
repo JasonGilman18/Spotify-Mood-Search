@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RankedItem from './../ranked-item/ranked-item.jsx';
 import Slider from './../slider/slider.jsx';
+import Spinner from 'react-bootstrap/Spinner';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 
@@ -10,7 +12,7 @@ class App extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {ranked_songs: [], ranked_artists: [], ranked_albums: [], values: [.500, .500, .500, .500]};
+        this.state = {searching: false, ranked_songs: [], ranked_artists: [], ranked_albums: [], values: [.500, .500, .500, .500]};
         this.search = this.search.bind(this);
         this.handleSlider = this.handleSlider.bind(this);
         this.getRankVals = this.getRankVals.bind(this);
@@ -19,9 +21,11 @@ class App extends Component {
 
     async search(e)
     {
+        this.setState({searching: true});
+
         var user_prefs = this.getRankVals();
         const response = await fetch('https://spotify-mood-search.herokuapp.com/rank' + user_prefs).then(res => res.json());
-        this.setState({ranked_songs: response["ranked_songs"], ranked_artists: response["ranked_artists"], ranked_albums: response["ranked_albums"]});
+        this.setState({searching: false, ranked_songs: response["ranked_songs"], ranked_artists: response["ranked_artists"], ranked_albums: response["ranked_albums"]});
     }
 
 
@@ -82,22 +86,25 @@ class App extends Component {
                 </div>
                 <div id="inputArea">
                     <div id="inputBox">
-                        <h1 className="inputHeading">I feel...</h1>
+                        <h2 className="inputHeading">I feel...</h2>
                         <div className="sliders"> 
                             <Slider leftLabel="Somber" rightLabel="Cheerful" onChange={this.handleSlider.bind(this)} index={0} value={this.state.values[0]}></Slider>
                             <Slider leftLabel="Peaceful" rightLabel="Excited" onChange={this.handleSlider.bind(this)} index={1} value={this.state.values[1]}></Slider>
                             <Slider leftLabel="Bored" rightLabel="Busy" onChange={this.handleSlider.bind(this)} index={2} value={this.state.values[2]}></Slider>
                             <Slider leftLabel="Reserved" rightLabel="Intimate" onChange={this.handleSlider.bind(this)} index={3} value={this.state.values[3]}></Slider>
                         </div>
-                        <div onClick={this.search} className="submitBtn">
-                            <h3>Search</h3>
+                        <div onClick={this.search} className={this.state.searching ? "hidden" : "submitBtn"}>
+                            <h4 className="submitBtnLabel">Search</h4>
+                        </div>
+                        <div className={this.state.searching ? "loading" : "hidden"}>
+                            <Spinner animation="border"></Spinner>
                         </div>
                     </div>
                 </div>
                 <div id="outputArea">
                     <div id="songOutput" className="outputBox">
                         <div className="outputBoxHeader">
-                            <h1>Songs</h1>
+                            <h1 className="outputBoxLabel">Songs</h1>
                         </div>
                         <div className="itemArea">
                             {
@@ -110,7 +117,7 @@ class App extends Component {
                     </div>
                     <div id="artistOutput" className="outputBox">
                         <div className="outputBoxHeader">
-                            <h1>Artists</h1>
+                            <h1 className="outputBoxLabel">Artists</h1>
                         </div>
                         <div className="itemArea">
                             {
@@ -123,7 +130,7 @@ class App extends Component {
                     </div>
                     <div id="albumOutput" className="outputBox">
                         <div className="outputBoxHeader">
-                            <h1>Albums</h1>
+                            <h1 className="outputBoxLabel">Albums</h1>
                         </div>
                         <div className="itemArea">
                             {
