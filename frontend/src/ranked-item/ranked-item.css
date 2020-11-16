@@ -1,0 +1,146 @@
+.rankedItem
+{
+    position: relative;
+
+    min-height: 100px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #797979;
+    color: #121212;
+
+    border-radius: 50px;
+
+    -webkit-box-shadow: 0 0 3px #121212;
+    box-shadow: 0 0 3px  #121212;
+}
+
+.first
+{
+    margin: 15px 0px 0px 0px;
+}
+
+.last
+{
+    margin: 15px 0px 15px 0px;
+}
+
+.middle
+{
+    margin: 15px 0px 0px 0px;
+}
+
+.rankedItem:hover
+{
+    background-color: #909090;
+
+    cursor: pointer;
+}
+
+.expandedSong
+{
+    min-height: 225px;
+}
+
+.expandedArtist
+{
+    min-height: 540px;
+}
+
+.itemPicture
+{
+    position: absolute;
+    top: 12px;
+    left: 15px;
+
+    height: 75px;
+    width: 75px;
+
+    border-radius: 100%;
+}
+
+.partition
+{
+    position: absolute;
+    top: 0px;
+    left: 102px;
+
+    height: 100px;
+    width: 5px;
+
+    background-color: #535353;
+}
+
+.itemContent
+{
+    position: absolute;
+    top: 0px;
+    left: 110px;
+
+    padding: 0px 0px 10px 10px;
+
+    height: 100px;
+    width: 150px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.itemContent p
+{
+    max-height: 55px;
+
+    margin: 0;
+
+    display: block;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.secondPartition
+{
+    position: absolute;
+    top: 100px;
+
+    height: 5px;
+    width: 100%;
+
+    background-color: #535353;
+}
+
+.spotifySongPlayer
+{
+    position: relative;
+    top: 45px;
+    left: 25px;
+
+    height: 80px;
+    width: 250px;
+
+    border-radius: 12px;
+}
+
+.spotifyArtistPlayer
+{
+    position: relative;
+    top: 43px;
+    left: 25px;
+
+    height: 390px;
+    width: 250px;
+
+    border-radius: 12px;
+}
+
+.hidden
+{
+    display: none;
+}

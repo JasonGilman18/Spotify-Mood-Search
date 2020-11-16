@@ -1,0 +1,22 @@
+{
+  "name": "Spotify-Mood-Search",
+  "version": "1.0.0",
+  "description": "<h1>Spotify Mood Search</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonGilman18/Spotify-Mood-Search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasonGilman18/Spotify-Mood-Search/issues"
+  },
+  "homepage": "https://github.com/JasonGilman18/Spotify-Mood-Search#readme",
+  "dependencies": {}
+}
