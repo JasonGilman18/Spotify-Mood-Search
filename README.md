@@ -5,6 +5,7 @@
 <h3>Directories</h3>
 <p>
     <b>frontend</b> - the ReactJS source code for the UI of the Spotify-Mood-Search application.
+    <br>
     <b>backend</b> - the server-side architecture for the Spotify-Mood-Search application. Python flask serving ReactJS front-end with python ranking functions.
 </p>
 
