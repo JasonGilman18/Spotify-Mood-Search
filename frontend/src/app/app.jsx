@@ -63,6 +63,15 @@ class App extends Component {
         valence = slider1_val;                              //measure of positivity has a direct relationship to somber -> cheerful
 
 
+        console.log("acousticness: " + acousticness);
+        console.log("danceability: " + danceability);
+        console.log("energy: " + energy);
+        console.log("instrumentalness: " + instrumentalness);
+        console.log("liveness: " + liveness);
+        console.log("speechiness: " + speechiness);
+        console.log("valence: " + valence);
+
+
         return '/' + acousticness + '/' + danceability + '/' + energy + '/' + instrumentalness + '/' + liveness + '/' + speechiness + '/' + valence;
     }
 

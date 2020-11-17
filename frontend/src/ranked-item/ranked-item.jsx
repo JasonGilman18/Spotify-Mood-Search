@@ -25,9 +25,17 @@ class RankedItem extends Component {
         else
             id = this.props.item.albumID
 
-        var item_image;
-        await fetch('https://spotify-mood-search.herokuapp.com/img/' + id).then(response => response.blob()).then(image => {item_image = URL.createObjectURL(image)});
-        this.setState({img: item_image});
+            
+        const response = await fetch('https://spotify-mood-search.herokuapp.com/img/' + id);
+
+        if(response.status == 200)
+        {
+            response.blob().then(image => {
+
+                var item_image = URL.createObjectURL(image);
+                this.setState({img: item_image});
+            });
+        }  
     }
 
 
